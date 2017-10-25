@@ -1,0 +1,28 @@
+{
+  "distribution_centers": [
+    {
+      "country_code": "BE",
+      "name": "Distribution Center 1",
+      "number": 1,
+      "tag": "DC1"
+    },
+    {
+      "country_code": "BE",
+      "name": "Distribution Center 2",
+      "number": 2,
+      "tag": "DC2"
+    },
+    {
+      "country_code": "BE",
+      "name": "Distribution Center 3",
+      "number": 3,
+      "tag": "DC3"
+    },
+    {
+      "country_code": "LU",
+      "name": "Distribution Center 4",
+      "number": 4,
+      "tag": "DC4"
+    }
+  ]
+}

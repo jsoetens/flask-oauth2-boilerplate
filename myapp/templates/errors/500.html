@@ -1,0 +1,19 @@
+{# 500.html is used for 500 Internal Server Error #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = '500'|default('index') -%}
+{% block title %}500 Internal Server Error{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="jumbotron">
+            <h1 class="display-4">500 Internal Server Error</h1>
+            <p class="lead">Oops, something went seriously wrong!</p>
+            <hr class="my-4">
+            <p>Try reloading the page or come back later...</p>
+            <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+            </p>
+        </div>
+    </div>
+{%- endblock %}

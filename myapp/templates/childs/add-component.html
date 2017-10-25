@@ -1,0 +1,26 @@
+{# component-add.html is the template all our other add templates derive from.
+   There are blocks for just about every part so each part can be replaced
+   or added to using super()
+   Using an minus sign (-) at the start or end of a block, this will
+   remove whitespaces after or before that block #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = 'stores' -%}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <h1>{% block add_h1 %}{%- endblock add_h1 %}</h1>
+                <hr/>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                {{ flash_alert() }}
+                {% block main %}
+                {% endblock main %}
+            </div>
+        </div>
+    <!-- container -->
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{# stores.html is used for stores overview #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = 'stores' -%}
+{% block title %}Stores Overview{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-10">
+                <h1>Stores Overview</h1>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-primary" href="{{ url_for('.add_store') }}" role="button">Add Store</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Select a store to get all components.</p>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>DC</th>
+                        <th>Status</th>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Street</th>
+                        <th>Street Number</th>
+                        <th>Postal Code</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for store in stores %}
+                        <!-- make the row clickable -->
+                        <tr onclick="window.document.location='{{ store.country_code }}/{{ store.number }}/components';">
+                            <td>{{ store.country_code }}</td>
+                            <td>{{ store.dc_tag }}</td>
+                            <td>{{ store.store_status }}</td>
+                            <td>{{ store.number }}</td>
+                            <td>{{ store.name }}</td>
+                            <td>{{ store.street_name }}</td>
+                            <td>{{ store.street_number }}</td>
+                            <td>{{ store.postal_code }}</td>
+                            <td>{{ store.city }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{%- endblock %}

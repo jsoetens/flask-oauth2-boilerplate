@@ -1,0 +1,46 @@
+{# edit-store.html is used to edit a store #}
+{%- extends "childs/edit-component.html" %}
+{% from "base/macros.html" import render_field_colmd4, render_field_colmd8 %}
+{% block edit_h1 %}Edit Store {{ store.country_code }} {{ store.number }} - {{ store.name }}{%- endblock edit_h1 %}
+{% block main%}
+    <form id="editStoreForm" name="editStoreForm" method="POST" action="{{ url_for('.edit_store', country_code=store.country_code, number=store.number) }}" novalidate>
+        {{ form.csrf_token }}
+        <div class="form-row">
+            {{ render_field_colmd4(form.country_code, required=True) }}
+            {{ render_field_colmd4(form.dc, required=True) }}
+            {{ render_field_colmd4(form.status, required=True) }}
+        </div>
+        <div class="form-row">
+            {{ render_field_colmd4(form.number, value=store.number, required=True) }}
+            {{ render_field_colmd8(form.name, value=store.name, required=True) }}
+        </div>
+        <div class="form-row">
+            {{ render_field_colmd4(form.street_number, value=store.street_number) }}
+            {{ render_field_colmd8(form.street_name, value=store.street_name) }}
+        </div>
+        <div class="form-row">
+            {{ render_field_colmd4(form.postal_code, value=store.postal_code) }}
+            {{ render_field_colmd8(form.city, value=store.city) }}
+        </div>
+        <button type="submit" name="editStore" class="btn btn-primary">Save</button>
+        <a class="btn btn-primary" href="{{ url_for('.index') }}" role="button">Cancel</a>
+    </form>
+{% endblock main%}
+{% block scripts_extras %}
+<script>
+// JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  "use strict";
+  window.addEventListener("load", function() {
+    var form = document.getElementById("editStoreForm");
+    form.addEventListener("submit", function(event) {
+      if (form.checkValidity() == false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add("was-validated");
+    }, false);
+  }, false);
+}());
+</script>
+{%- endblock scripts_extras %}

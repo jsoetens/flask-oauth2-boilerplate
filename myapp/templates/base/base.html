@@ -1,0 +1,77 @@
+{# base.html is the template all our other templates derive from.
+   There are blocks for just about every part so each part can be replaced
+   or added to using super()
+   Using an minus sign (-) at the start or end of a block, this will
+   remove whitespaces after or before that block
+   TODO: review whitespace removal in base.html #}
+{% block doc -%}
+<!DOCTYPE html>
+<html lang="en">
+{%- block html %}
+<head>
+{%- block head %}
+    {%- block meta %}
+    <!-- Bootstrap 4 Beta - Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block meta_extras %}{%- endblock meta_extras %}
+    {%- endblock meta %}
+    {# dynamic title for template: add title variable while rendering #}
+    <title>{% block title %}Welcome to MYAPP{%- endblock title %}</title>
+    {%- block styles %}
+    <!-- Bootstrap 4 Beta - CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- myapp - CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    {%- endblock styles %}
+    {% block styles_extras %}{%- endblock styles_extras %}
+    {% block head_extras %}{%- endblock head_extras %}
+{%- endblock head %}
+</head>
+    <body>
+    {% block body -%}
+    {% block navbar %}
+    <!-- http://jinja.pocoo.org/docs/2.9/tricks/ -->
+    {% set navigation_bar = [
+        ('/stores', 'stores', 'Stores'),
+        ('/api', 'api', 'API')
+    ] -%}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">MYAPP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto" id="navigation">
+                {% for href, id, caption in navigation_bar %}
+                    <li{% if id == active_page %} class="nav-item active"{% else %} class="nav-item"{% endif %}>
+                        <a class="nav-link" href="{{ href|e }}">{{ caption|e }}<span class="sr-only">(current)</span></a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <form class="form-inline">
+                {% if current_user.is_authenticated %}
+                    <a class="btn btn-primary" href="{{ url_for('oauth2.signout') }}" role="button">Sign out</a>
+                {% else %}
+                    <a class="btn btn-primary" href="{{ url_for('oauth2.signin') }}" role="button">Sign in</a>
+                {% endif %}
+            </form>
+        </div>
+    </nav>
+    {%- endblock navbar %}
+    {% block content -%}{%- endblock content %}
+    {# The Bootstrap 4 container div is not added for full control of content,
+       so don't forget to add it! #}
+    {% block scripts %}
+    <!-- Bootstrap 4 Beta - JavaScript (jQuery first, then Popper.js, then Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    {% block scripts_extras %}{%- endblock scripts_extras %}
+    {%- endblock scripts %}
+    {%- endblock body %}
+    </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}

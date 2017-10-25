@@ -1,0 +1,89 @@
+{# api.html is used for api overview #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = 'api'|default('index') -%}
+{% block title %}API Overview{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <h1>API Overview</h1>
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Authentication</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/">/</a></td>
+                    <td>None</td>
+                    <td>Client HTML page</td>
+                </tr>
+                <!-- Users -->
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/users">/api/users</a></td>
+                    <td>None</td>
+                    <td>JSON of Users</td>
+                </tr>
+                <!-- Countries -->
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/countries">/api/countries</a></td>
+                    <td>None</td>
+                    <td>JSON of Countries</td>
+                </tr>
+                <!-- Distribution Centers -->
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/distribution_centers">/api/distribution_centers</a></td>
+                    <td>None</td>
+                    <td>JSON of Distribution Centers</td>
+                </tr>
+                <!-- Store Statuses -->
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/store_status">/api/store_status</a></td>
+                    <td>None</td>
+                    <td>JSON of Store Statuses</td>
+                </tr>
+                <!-- Stores -->
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/stores">/api/stores</a></td>
+                    <td>None</td>
+                    <td>JSON of Stores</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/stores/1">/api/stores/number<a></td>
+                    <td>None</td>
+                    <td>JSON of Store by Number</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/stores/BE">/api/stores/country_code<a></td>
+                    <td>None</td>
+                    <td>JSON of Stores by Country Code (ISO 3166-2)</td>
+                </tr>
+                <!-- Store Components -->
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/store_components">/api/store_components</a></td>
+                    <td>None</td>
+                    <td>JSON of Store Components</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td><a href="/api/store_components/backoffice">/api/store_components/type</a></td>
+                    <td>None</td>
+                    <td>JSON of Store Components by Type</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{%- endblock %}

@@ -1,0 +1,14 @@
+{# delete-store.html is used to delete a store #}
+{%- extends "childs/delete-component.html" %}
+{% import "base/macros.html" as macros %}
+{% block delete_h1 %}Delete Store {{ store.country_code }} {{ store.number }} - {{ store.name }}{%- endblock delete_h1 %}
+{% block main%}
+    <div class="alert alert-danger" role="alert">
+        <strong>Are you sure you want to delete this store?<strong>
+    </div>
+    <form id="deleteStoreForm" name="deleteStoreForm" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <a class="btn btn-primary" href="{{ url_for('.index') }}" role="button">Cancel</a>
+        <button type="submit" name="deleteStore" class="btn btn-primary">Yes</button>
+    </form>
+{% endblock main%}

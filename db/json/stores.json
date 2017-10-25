@@ -1,0 +1,105 @@
+{
+    "stores": {
+        "1": {
+            "store": {
+                "country_code": "BE",
+                "number": "1",
+                "name": "Croissant Time",
+                "street_number": "59",
+                "street_name": "Stormestraat",
+                "postal_code": "8790",
+                "city": "Waregem"
+            }
+        },
+        "2": {
+            "store": {
+                "country_code": "BE",
+                "name": "River City Coffee",
+                "street_number": "102",
+                "street_name": "Keldermansvest",
+                "postal_code": "2800",
+                "city": "Mechelen"
+            }
+        },
+        "3": {
+            "store": {
+                "country_code": "BE",
+                "name": "Caseys General Store",
+                "street_number": "88",
+                "street_name": "Zilverlaan",
+                "postal_code": "8400",
+                "city": "Oostende"
+            }
+        },
+        "4": {
+            "store": {
+                "country_code": "BE",
+                "name": "Little Giant Farmers Market",
+                "street_number": "1",
+                "street_name": "Avenue du Général Michel",
+                "postal_code": "600",
+                "city": "Charleroi"
+            }
+        },
+        "5": {
+            "store": {
+                "country_code": "BE",
+                "name": "Mortensen Super Market",
+                "street_number": "34",
+                "street_name": "Beekstraat",
+                "postal_code": "9160",
+                "city": "Lokeren"
+            }
+        },
+        "6": {
+            "store": {
+                "country_code": "BE",
+                "name": "Asian Foods",
+                "street_number": "203",
+                "street_name": "Rozenstraat",
+                "postal_code": "3500",
+                "city": "Hasselt"
+            }
+        },
+        "7": {
+            "store": {
+                "country_code": "BE",
+                "name": "Italian Food",
+                "street_number": "5",
+                "street_name": "Gentpoortstraat",
+                "postal_code": "800",
+                "city": "Brugge"
+            }
+        },
+        "8": {
+            "store": {
+                "country_code": "BE",
+                "name": "Dans Super Market",
+                "street_number": "17",
+                "street_name": "Korte Nieuwstraat",
+                "postal_code": "2000",
+                "city": "Antwerpen"
+            }
+        },
+        "9": {
+            "store": {
+                "country_code": "LU",
+                "name": "Specialty Cakes",
+                "street_number": "3",
+                "street_name": "Rue du Camping",
+                "postal_code": "7410",
+                "city": "Mersch"
+            }
+        },
+        "10": {
+            "store": {
+                "country_code": "LU",
+                "name": "Health Haven",
+                "street_number": "21",
+                "street_name": "Rue du Chemin de Fer",
+                "postal_code": "8011",
+                "city": "Bertrange"
+            }
+        }
+    }
+}

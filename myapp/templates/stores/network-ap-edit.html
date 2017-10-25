@@ -1,0 +1,9 @@
+{# network-ap-edit.html is used to edit a network access point #}
+{%- extends "childs/component-edit.html" %}
+{% block edit_h1 %}Network Access Point Edit{%- endblock edit_h1 %}
+{% block main%}
+<form>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <button type="submit" name="editNetworkAP" class="btn btn-primary">Edit</button>
+</form>
+{% endblock main%}

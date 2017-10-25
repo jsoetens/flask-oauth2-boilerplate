@@ -1,0 +1,19 @@
+{# 401.html is used for 401 Unauthorized #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = '401'|default('index') -%}
+{% block title %}401 Unauthorized{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="jumbotron">
+            <h1 class="display-4">401 Unauthorized</h1>
+            <p class="lead">Access denied due to invalid credentials!</p>
+            <hr class="my-4">
+            <p>You don't have permission to access this page. Please head back to safety...</p>
+            <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+            </p>
+        </div>
+    </div>
+{%- endblock %}

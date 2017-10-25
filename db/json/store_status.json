@@ -1,0 +1,19 @@
+{
+  "store_status": [
+    {
+      "description": null,
+      "name": "To be opened",
+      "sequence": 1
+    },
+    {
+      "description": null,
+      "name": "Open",
+      "sequence": 2
+    },
+    {
+      "description": null,
+      "name": "Closed",
+      "sequence": 3
+    }
+  ]
+}

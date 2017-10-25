@@ -1,0 +1,15 @@
+/* Common Stuff */
+
+body {
+    /* Google Fonts - Roboto Condensed */
+    /* https://fonts.google.com/specimen/Roboto+Condensed */
+    font-family: 'Roboto Condensed', sans-serif;
+    /* font-size: 16px; */
+    /* Bootstrap 4 Beta - Navbar Top Fixed */
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+.img-hero {
+    width: 100%;
+}

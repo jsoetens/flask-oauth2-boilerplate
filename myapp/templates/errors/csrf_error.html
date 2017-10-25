@@ -1,0 +1,19 @@
+{# csrf-error.html is used for 403 Forbidden #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = 'csfr-error'|default('index') -%}
+{% block title %}403 Forbidden{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="jumbotron">
+            <h1 class="display-4">CSRF Error</h1>
+            <p class="lead">Validation failed!</p>
+            <hr class="my-4">
+            <p>{{ reason }}</p>
+            <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+            </p>
+        </div>
+    </div>
+{%- endblock %}

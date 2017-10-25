@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "provider": "myapp",
+      "social_id": "44766640813521073835",
+      "email_address": "admin@myapp.com",
+      "password": "only4admins"
+    },
+    {
+      "provider": "myapp",
+      "social_id": "44766640813521073835",
+      "email_address": "user@myapp.com",
+      "password": "only4users"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "countries": [
+    {
+      "country_code": "BE", 
+      "country_name": "Belgium"
+    }, 
+    {
+      "country_code": "LU", 
+      "country_name": "Luxembourg"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{# tab-store.html is included in the tabpanel of components #}
+{# It shows a readonly store form with relevant placeholder values #}
+{% from "base/macros.html" import render_field_colmd4, render_field_colmd8 %}
+<form id="storeForm" name="storeForm">
+    {{ form.csrf_token }}
+    <div class="form-row">
+        {{ render_field_colmd4(form.country_code, placeholder=store.country_code, readonly=True) }}
+        {{ render_field_colmd4(form.dc, placeholder=store.dc_id, readonly=True) }}
+        {{ render_field_colmd4(form.status, placeholder=store.status_id, readonly=True) }}
+    </div>
+    <div class="form-row">
+        {{ render_field_colmd4(form.number, placeholder=store.number, readonly=True) }}
+        {{ render_field_colmd8(form.name, placeholder=store.name, readonly=True) }}
+    </div>
+    <div class="form-row">
+        {{ render_field_colmd4(form.street_number, placeholder=store.street_number, readonly=True) }}
+        {{ render_field_colmd8(form.street_name, placeholder=store.street_name, readonly=True) }}
+    </div>
+    <div class="form-row">
+        {{ render_field_colmd4(form.postal_code, placeholder=store.postal_code, readonly=True) }}
+        {{ render_field_colmd8(form.city, placeholder=store.city, readonly=True) }}
+    </div>
+</form>

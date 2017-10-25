@@ -1,0 +1,132 @@
+{# components.html is used for Store Components #}
+{# edit / delete / add buttons are available, just uncomment them #}
+{%- extends "base/base.html" %}
+{% import "base/macros.html" as macros %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = 'stores' -%}
+{% block title %}Stores Components{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <h1>{{ store.country_code }} {{ store.number }} - {{ store.name }}</h1>
+        <hr/>
+        <!-- vertical pills -->
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+                    <!-- Stores -->
+                    <a class="nav-link active" id="v-pills-store-tab" data-toggle="pill" href="#v-pills-store" role="tab" aria-controls="v-pills-store" aria-expanded="true">Store</a>
+                    <!-- Backoffice -->
+                    <a class="nav-link" id="v-pills-bo-tab" data-toggle="pill" href="#v-pills-bo" role="tab" aria-controls="v-pills-bo" aria-expanded="true">Backoffice</a>
+                    <!-- Network Routers -->
+                    <a class="nav-link" id="v-pills-network-routers-tab" data-toggle="pill" href="#v-pills-network-routers" role="tab" aria-controls="v-pills-network-routers" aria-expanded="true">Network Routers</a>
+                    <!-- Network Switches -->
+                    <a class="nav-link" id="v-pills-network-switches-tab" data-toggle="pill" href="#v-pills-network-switches" role="tab" aria-controls="v-pills-network-switches" aria-expanded="true">Network Switches</a>
+                    <!-- Network Access Points -->
+                    <a class="nav-link" id="v-pills-network-aps-tab" data-toggle="pill" href="#v-pills-network-aps" role="tab" aria-controls="v-pills-network-aps" aria-expanded="true">Network Access Points</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <!-- Stores -->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-store" role="tabpanel" aria-labelledby="v-pills-store-tab">
+                        {% include 'stores/tab-store.html'%}
+                        <hr/>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <a class="btn btn-primary" href="{{ url_for('.edit_store', country_code=store.country_code, number=store.number) }}" role="button">Edit</a>
+                                <a class="btn btn-primary" href="{{ url_for('.delete_store', country_code=store.country_code, number=store.number) }}" role="button">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Backoffice -->
+                    <div class="tab-pane fade" id="v-pills-bo" role="tabpanel" aria-labelledby="v-pills-bo-tab">
+                        <form>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            {% for bo in backoffice %}
+                                <div class="form-row">
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputBackofficeHostname', value='Hostname', placeholder=bo.hostname) }}
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputBackofficeIPAddress', value='IP Address', placeholder=bo.ip_address) }}
+                                </div>
+                            {% endfor %}
+                            <!-- <button type="submit" name="edit" class="btn btn-primary">Edit</button>
+                            <button type="submit" name="delete" class="btn btn-primary">Delete</button>
+                            <hr/>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="submit" name="add" class="btn btn-primary">Add Backoffice</button>
+                               </div>
+                            </div> -->
+                        </form>
+                    </div>
+                    <!-- Network Routers -->
+                    <div class="tab-pane fade" id="v-pills-network-routers" role="tabpanel" aria-labelledby="v-pills-network-routers-tab">
+                        <form>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            {% for nr in network_routers %}
+                                <div class="form-row">
+                                    <!-- store.number~" "~store.name~" - "~nr.hostname -->
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputLidlRouterInsideHostname', value='Hostname', placeholder=nr.hostname) }}
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputLidlRouterInsideIPAddress', value='IP Address', placeholder=nr.ip_address) }}
+                                </div>
+                            {% endfor %}
+                            <!-- <button type="submit" name="edit" class="btn btn-primary">Edit</button>
+                            <button type="submit" name="delete" class="btn btn-primary">Delete</button>
+                            <hr/>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="submit" name="add" class="btn btn-primary">Add Network Router</button>
+                               </div>
+                            </div> -->
+                        </form>
+                    </div>
+                    <!-- Network Switches -->
+                    <div class="tab-pane fade" id="v-pills-network-switches" role="tabpanel" aria-labelledby="v-pills-network-switches-tab">
+                        <form>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            {% for ns in network_switches %}
+                                <div class="form-row">
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputNetworkSwitchHostname', value='Hostname', placeholder=ns.hostname) }}
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputNetworkSwitchIPAddress', value='IP Address', placeholder=ns.ip_address) }}
+                                </div>
+                            {% endfor %}
+                            <!-- <button type="submit" name="edit" class="btn btn-primary">Edit</button>
+                            <button type="submit" name="delete" class="btn btn-primary">Delete</button>
+                            <hr/>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="submit" name="add" class="btn btn-primary">Add Network Switch</button>
+                               </div>
+                            </div> -->
+                        </form>
+                    </div>
+                    <!-- Network Access Points -->
+                    <div class="tab-pane fade" id="v-pills-network-aps" role="tabpanel" aria-labelledby="v-pills-network-aps-tab">
+                        <form>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            {% for ap in network_access_points %}
+                                <div class="form-row">
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputNetworkAPHostname', value='Hostname', placeholder=ap.hostname) }}
+                                    {{ macros.input_formgroup_text_readonly(grid='col-md-6', name='inputNetworkAPIPAddress', value='IP Address', placeholder=ap.ip_address) }}
+                                </div>
+                            {% endfor %}
+                            <!-- <button type="submit" name="edit" class="btn btn-primary">Edit</button>
+                            <button type="submit" name="delete" class="btn btn-primary">Delete</button>
+                            <hr/>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="submit" name="add" class="btn btn-primary">Add Access Point</button>
+                               </div>
+                            </div> -->
+                        </form>
+                    <!-- v-pills-network-aps -->
+                    </div>
+                <!-- v-pills-tabContent -->
+                </div>
+            <!-- col-9 -->
+            </div>
+        <!-- row -->
+        </div>
+    <!-- container -->
+    </div>
+{%- endblock %}

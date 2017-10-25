@@ -1,0 +1,19 @@
+{# 405.html is used for 405 Method Not Allowed #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = '405'|default('index') -%}
+{% block title %}405 Method Not Allowed{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="jumbotron">
+            <h1 class="display-4">405 Method Not Allowed</h1>
+            <p class="lead">The method is not allowed for the requested URL!</p>
+            <hr class="my-4">
+            <p>Please head back to safety...</p>
+            <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+            </p>
+        </div>
+    </div>
+{%- endblock %}

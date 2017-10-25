@@ -1,0 +1,69 @@
+/* Bootstrap 4 Beta - Sign-in page */
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* custom stuff */
+
+.h2-signin {
+    margin-top: .5rem;
+}
+
+.button-google-signin {
+    /*background-color: rgb(255, 255, 255) !important;*/
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
+    margin-bottom: 10px;
+}
+
+.img-google-signin {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.button-facebook-signin {
+    /*background-color: rgb(255, 255, 255) !important;*/
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.img-facebook-signin {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}

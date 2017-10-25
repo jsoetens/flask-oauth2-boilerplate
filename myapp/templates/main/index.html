@@ -1,0 +1,19 @@
+{# index.html is used for homepage #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% block title %}Welcome to MYAPP{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="row">
+            <div class="col-md">
+                <h1>Welcome to MYAPP</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <img class="img-hero" src="{{ url_for('static', filename='img/myapp-hero.jpg') }}" alt="MYAPP">
+            </div>
+        </div>
+    </div>
+{%- endblock %}

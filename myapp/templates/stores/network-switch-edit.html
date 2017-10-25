@@ -1,0 +1,9 @@
+{# network-router-edit.html is used to edit a network switch #}
+{%- extends "childs/component-edit.html" %}
+{% block edit_h1 %}Network Switch Edit{%- endblock edit_h1 %}
+{% block main%}
+<form>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <button type="submit" name="editNetworkSwitch" class="btn btn-primary">Edit</button>
+</form>
+{% endblock main%}

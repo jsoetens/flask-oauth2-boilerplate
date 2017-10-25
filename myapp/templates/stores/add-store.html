@@ -1,0 +1,46 @@
+{# add-store.html is used to add a store #}
+{%- extends "childs/add-component.html" %}
+{% from "base/macros.html" import render_field_colmd4, render_field_colmd8 %}
+{% block add_h1 %}Add a New Store{%- endblock add_h1 %}
+{% block main%}
+    <form id="addStoreForm" name="addStoreForm" method="POST" action="{{ url_for('.add_store') }}" novalidate>
+        {{ form.csrf_token }}
+        <div class="form-row">
+            {{ render_field_colmd4(form.country_code, required=True) }}
+            {{ render_field_colmd4(form.dc, required=True) }}
+            {{ render_field_colmd4(form.status, required=True) }}
+        </div>
+        <div class="form-row">
+            {{ render_field_colmd4(form.number, required=True) }}
+            {{ render_field_colmd8(form.name, required=True) }}
+        </div>
+        <div class="form-row">
+            {{ render_field_colmd4(form.street_number) }}
+            {{ render_field_colmd8(form.street_name) }}
+        </div>
+        <div class="form-row">
+            {{ render_field_colmd4(form.postal_code) }}
+            {{ render_field_colmd8(form.city) }}
+        </div>
+        <button type="submit" name="addStore" class="btn btn-primary">Save</button>
+        <a class="btn btn-primary" href="{{ url_for('.index') }}" role="button">Cancel</a>
+    </form>
+{% endblock main%}
+{% block scripts_extras %}
+<script>
+// JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  "use strict";
+  window.addEventListener("load", function() {
+    var form = document.getElementById("addStoreForm");
+    form.addEventListener("submit", function(event) {
+      if (form.checkValidity() == false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add("was-validated");
+    }, false);
+  }, false);
+}());
+</script>
+{%- endblock scripts_extras %}

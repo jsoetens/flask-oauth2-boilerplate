@@ -1,0 +1,19 @@
+{# 404.html is used for 404 Not Found #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert %}
+{% set active_page = '404'|default('index') -%}
+{% block title %}404 Not Found{%- endblock title %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+        <div class="jumbotron">
+            <h1 class="display-4">404 Not Found</h1>
+            <p class="lead">The page you are looking for can't be found!</p>
+            <hr class="my-4">
+            <p>We are looking for your page, but we can't find it. Please head back to safety...</p>
+            <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+            </p>
+        </div>
+    </div>
+{%- endblock %}

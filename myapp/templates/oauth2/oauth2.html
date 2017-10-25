@@ -1,0 +1,59 @@
+{# index.html is used for homepage #}
+{%- extends "base/base.html" %}
+{% from "base/macros.html" import flash_alert, render_field_signin %}
+{% block title %}{{ title }}{%- endblock title %}
+{% block styles_extras %}
+    <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
+{%- endblock styles_extras %}
+{% block content %}
+    <div class="container">
+        {{ flash_alert() }}
+
+        <div class="row justify-content-center align-items-center">
+            <h2>Sign in to your account</h2>
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-md-4">
+                <form action="{{ url_for('oauth2.oauth2_signin', provider='google') }}">
+                    <button class="btn btn-block btn-light button-google-signin" type="submit" name="googleSigninForm">
+                        <img class="img-google-signin" src="{{ url_for('static', filename='img/logo-google-signin-button.svg') }}" alt="Google logo">
+                        <span>Sign in with Google</span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-md-4">
+                <form action="{{ url_for('oauth2.oauth2_signin', provider='facebook') }}">
+                    <button class="btn btn-block btn-light button-facebook-signin" type="submit" name="facebookSigninForm">
+                        <img class="img-facebook-signin" src="{{ url_for('static', filename='img/logo-facebook-signin-button.svg') }}" alt="Facebook logo">
+                        <span>Sign in with Facebook</span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <h3 class="h2-signin">or</h3>
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-4">
+                <form class="form-signin" id="signInForm" name="signInForm" method="POST" action="{{ url_for('.signin') }}" novalidate>
+                    {{ form.csrf_token }}
+                    {{ render_field_signin(form.email_address, type="email", placeholder="Email Address", autofocus=True) }}
+                    {{ render_field_signin(form.password, type="password", placeholder="Password") }}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" name="signInForm">Sign in</button>
+                </form>
+            </div>
+        </div>
+
+    <!-- container -->
+    </div>
+{%- endblock %}
