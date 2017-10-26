@@ -183,8 +183,6 @@ def edit_store(country_code, number):
     # HTTP POST
     if form.validate_on_submit():
         # Update the store
-        # Retrieve store primary key
-        store_id = Store.get_id(country_code, number)
         # Keep an informative store_name for feedback
         store_name = ('{} - {} {}'.format(
             form.country_code.data.country_code,
