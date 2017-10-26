@@ -47,6 +47,7 @@ class BaseConfig(object):
     # Flask debug mode
     DEBUG = False
     TESTING = False
+
     # Secret key needs to be randomly generated (you can use os.urandom(24))
     SECRET_KEY = os.environ.get(
         'SECRET_KEY',
@@ -56,12 +57,18 @@ class BaseConfig(object):
     WTF_CSRF_SECRET_KEY = os.environ.get(
         'WTF_CSRF_SECRET_KEY',
         '\xc9\xcc\x91{\xd9\x9a\x18\x92\xaa\xb4\x9e\x80\x07\x13\x92-\x1ciH\x86\xecz:[')  # noqa
+
     # Turn off Flask-SQLAlchemy event system
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
     # SQLAlchemy database location
     # PostgreSQL - postgresql://username:password@hostname/database
     # MySQL - mysql://username:password@hostname/database
     # SQLite - sqlite:////absolute/path/to/database
+    # Create the default db/sqlite directory if it doesn't exist
+    # Avoid sqlalchemy.exc.OperationalError: (sqlite3.OperationalError)
+    if not os.path.isdir('db/sqlite'):
+        os.makedirs('db/sqlite')
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL',
         'sqlite:///' + os.path.join(basedir, 'db/sqlite/myapp.db'))
