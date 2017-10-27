@@ -148,8 +148,9 @@ class OAuth2Google(OAuth2Client):
         """
         If the application redirects back, the remote application can fetch
         all relevant information in the oauth_authorized function with
-        authorized_response(). Facebook returns an access_token like this:
-        {'access_token': 'xyz', 'token_type': 'bearer', 'expires_in': xyz}
+        authorized_response(). Google returns an access_token like this:
+        {'access_token': 'x', 'expires_in': 3600, 'id_token': 'x',
+        'token_type': 'Bearer'}
 
         Returns:
             provider, social_id, email_address, username
@@ -239,7 +240,7 @@ class OAuth2Facebook(OAuth2Client):
         If the application redirects back, the remote application can fetch
         all relevant information in the oauth_authorized function with
         authorized_response(). Facebook returns an access_token like this:
-        {'access_token': 'xyz', 'token_type': 'bearer', 'expires_in': xyz}
+        {'access_token': 'x', 'token_type': 'bearer', 'expires_in': x}
 
         Returns:
             provider, social_id, email_address, username
