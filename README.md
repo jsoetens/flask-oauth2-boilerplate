@@ -59,6 +59,7 @@ Create a virtual environment and start one of the shell scripts, this example us
 ```
 pip3 install --user pipenv
 pipenv --three
+pipenv install psycopg2  # PostgreSQL driver
 pipenv install Flask
 pipenv install Flask-DebugToolbar
 pipenv install Flask-Login
