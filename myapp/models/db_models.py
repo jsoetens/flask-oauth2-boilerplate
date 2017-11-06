@@ -54,8 +54,7 @@ class User(UserMixin, db.Model):
         db.PrimaryKeyConstraint('id', name='pk_users'),
         db.UniqueConstraint(
             'provider', 'social_id',
-            name='uq_users_1')
-        )
+            name='uq_users_1'))
 
     def generate_social_id(size=20, chars=string.digits):
         """
@@ -118,7 +117,9 @@ class Country(db.Model):
     # __table_args__ value must be a tuple, dict, or None
     __table_args__ = (
         db.PrimaryKeyConstraint(
-            'country_code', 'country_name', name='pk_countries'), )
+            'country_code', 'country_name', name='pk_countries'),
+        db.UniqueConstraint(
+            'country_code', name='uq_countries_1'))
 
     def get_all():
         """ Returns all countries ordered by country_code """
@@ -159,8 +160,7 @@ class DistributionCenter(db.Model):
         db.UniqueConstraint(
             'country_code',
             'number',
-            name='uq_distribution_centers_1')
-        )
+            name='uq_distribution_centers_1'))
 
     def get_id(country_code, number):
         """
@@ -223,8 +223,7 @@ class StoreStatus(db.Model):
         db.UniqueConstraint(
             'sequence',
             'name',
-            name='uq_store_status_1')
-        )
+            name='uq_store_status_1'))
 
     def get_name(id):
         """
@@ -283,8 +282,7 @@ class Store(db.Model):
         db.UniqueConstraint(
             'country_code',
             'number',
-            name='uq_distribution_centers_1')
-            )
+            name='uq_stores_1'))
 
     def get_id(country_code, number):
         """ Returns id (pk) based on country_code and number """
@@ -384,8 +382,7 @@ class StoreComponent(db.Model):
         db.UniqueConstraint(
             'store_id',
             'hostname',
-            name='uq_store_components_1')
-            )
+            name='uq_store_components_1'))
 
     def get_all_by_type(store_id, component_type):
         """ Returns store components based on store_id and component_type """
