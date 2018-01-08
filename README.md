@@ -23,6 +23,8 @@ Google's [oauth2client](https://oauth2client.readthedocs.io) got [recently depre
 I decided to use [Flask-OAuthlib](https://flask-oauthlib.readthedocs.io), it uses [Requests-OAuthlib](https://requests-oauthlib.readthedocs.io) which is a high-level client library built on [OAuthLib](https://oauthlib.readthedocs.io) & [Requests](http://docs.python-requests.org). Please note that Google has also just released [one-tap sign-up an auto sign-in on websites](https://developers.google.com/identity/one-tap/web/overview).  
 Currently supported providers: Google, Facebook.
 
+**Update @ 2018-01-08**: apparently Flask-OAuthlib is now also [deprecated](https://lepture.com/en/2018/announcement-of-authlib) and will be replaced by [Authlib](https://authlib.org)...
+
 ## Flask Extensions
 Keeping the extensions to a minimum, others can be easily integrated.
 * [Flask-OAuthlib](https://flask-oauthlib.readthedocs.io)
