@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+"psycopg2" = "*"
+flask = "*"
+flask-debugtoolbar = "*"
+flask-login = "*"
+flask-oauthlib = "*"
+flask-sqlalchemy = "*"
+flask-wtf = "*"
+passlib = {extras = ["argon2"]}
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
